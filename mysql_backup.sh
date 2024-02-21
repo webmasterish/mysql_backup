@@ -18,15 +18,17 @@ if [ -n "$1" ]; then
 
 elif [ -f "${SCRIPT_DIR}/mysql_backup.config" ]; then
 
-	source "${SCRIPT_DIR}/mysql_backup.config"
+	CONFIG_FILE="${SCRIPT_DIR}/mysql_backup.config"
 
 fi
 
-[ ! -r ${CONFIG_FILE} ] && echo "Unreadable config file '${CONFIG_FILE}'. Aborting." && exit 1
+[ ! -r "${CONFIG_FILE}" ] && echo "Unreadable config file '${CONFIG_FILE}'. Aborting." && exit 1
 
 # ------------------------------------------------------------------------------
 
-# check required vars
+# load vars and check required ones
+
+source "${CONFIG_FILE}"
 
 [ ! -n "${BACKUP_DIR}" ] && echo "BACKUP_DIR required. Aborting." && exit 1
 [ ! -n "${MYSQL_USER}" ] && echo "MYSQL_USER required. Aborting." && exit 1

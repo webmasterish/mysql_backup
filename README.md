@@ -30,7 +30,7 @@ To schedule the script as a cron job, add the following line to your crontab:
 # open crontab
 crontab -e
 
-# add the following will execute the script daily at 2:00 AM
+# add the following wich will execute the script daily at 2:00 AM
 # adjust the timing according to your requirements.
 0 2 * * * /path/to/mysql_backup.sh >/dev/null 2>&1
 
