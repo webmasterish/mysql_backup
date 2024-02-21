@@ -46,7 +46,7 @@ compress()
 
 	if [ -f "${_file}" ]; then
 
-		echo "compressing '${_file}'"
+		echo "Compressing '${_file}'"
 
 		bzip2 -fv "${_file}"
 
@@ -54,6 +54,10 @@ compress()
 
 }
 # compress()
+
+# ------------------------------------------------------------------------------
+
+TIMER_START="`date +%s.%N`"
 
 # ------------------------------------------------------------------------------
 
@@ -113,6 +117,15 @@ fi
 
 if [ -n "${DAYS_TO_KEEP}" ]; then
 
+	echo "Deleteing files older than ${DAYS_TO_KEEP} days"
+
 	find "${BACKUP_DIR}" -type f \( -name '*.sql' -o -name '*.sql.*' \) -mtime +${DAYS_TO_KEEP} -exec rm {} \;
 
 fi
+
+# ------------------------------------------------------------------------------
+
+TIMER_STOP="`date +%s.%N`"
+TIMER_TOTAL=$(echo "${TIMER_STOP} - ${TIMER_START}" | bc)
+
+echo -e "Performed in: ${TIMER_TOTAL} seconds\n"

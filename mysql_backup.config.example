@@ -1,7 +1,10 @@
+# required
 BACKUP_DIR="/path/to/mysql/backups"
-MYSQL_USER="root"
-MYSQL_PASS="root"
-MYSQL_HOST="localhost"
+MYSQL_USER="mysql_username"
+MYSQL_PASS="mysql_password"
+MYSQL_HOST="mysql_host"
+
+# optional
 SINGLE_BACKUP_FILE=
 COMPRESS=
 DAYS_TO_KEEP=7
